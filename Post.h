@@ -1,3 +1,10 @@
+#ifndef POST_H
+#define POST_H
+
+
+
+#include <iostream>
+
 class Post
 {
 public:
@@ -6,6 +13,7 @@ public:
    int getCol() const;
    char getSymbol() const; // get char representation of Post
    bool isElectrified() const;
+   void test();
    //other methods
 private:
    int row, col;
@@ -13,3 +21,5 @@ private:
               // other attributes (?)
               // could also have a state, like the robot(?)
 };
+
+#endif

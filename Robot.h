@@ -1,3 +1,11 @@
+#ifndef ROBOT_H
+#define ROBOT_H
+
+
+
+
+#include <iostream>
+
 class Robot
 {
 public:
@@ -12,12 +20,11 @@ public:
    char getSymbol() const; // get char representation of robot (R if alive, r if dead)
    int getRow() const;
    int getCol() const;
-   Position getPosition() const;
    bool isAlive() const;
    void setRow(int x);
    void setCol(int y);
-   void setPosition(const Position &pos);
    void setAsDead();
+   void test();
    //other methods
 private:
    static int robotCounter; //used to attribute automatically the id to the robots
@@ -26,3 +33,5 @@ private:
    bool alive;
    // other attributes (?)
 };
+
+#endif

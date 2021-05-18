@@ -1,11 +1,28 @@
+#ifndef GAME_H
+#define GAME_H
+
+
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include "Robot.h"
+#include "Post.h"
+#include "Player.h"
+#include "Maze.h"
+
+
 class Game
 {
 public:
-   Game(const string &filename);
+   Game(const std::string &filename);
    // This constructor should initialize the Maze, the vector of Robots, and the Player,
    // using the chars read from the file
    bool play(); // implements the game loop; returns true if player wins, false otherwise
    bool isValid();
+   void test();
+   int cols();
 
 private:
    void showGameDisplay() const;
@@ -19,6 +36,8 @@ private:
 private:
    Maze maze;
    Player player;
-   vector<Robot> robots;
+   std::vector<Robot> robots;
    //other attributes
 };
+
+#endif
