@@ -45,18 +45,18 @@ bool displayMenu(string file_name, bool &menu, bool &rules, bool &play, bool &wi
         {
             return 0;
         }
-    } while (menu_option > 3 || menu_option < 0);
-    if (menu_option == 1)
+    } while (menu_option > 3 || menu_option < 0); //get a valid option
+    if (menu_option == 1) //rules
     {
         menu = false;
         rules = true;
     }
-    if (menu_option == 2)
+    if (menu_option == 2) //play
     {
         menu = false;
         play = true;
     }
-    if (menu_option == 3)
+    if (menu_option == 3) //winners
     {
         menu = false;
         winners = true;
@@ -73,7 +73,7 @@ bool displayRules(string file_name, bool &menu, bool &rules)
         cout << "Option: ";
         if (!readInteger(option))
             return 0;
-    } while (option != 0);
+    } while (option != 0); //waits for a valid input
     menu = true;
     rules = false;
     return 1;
@@ -83,7 +83,7 @@ bool displayWinners(bool &menu, bool &winners)
 {
     int option;
     string file_name;
-    file_name = chooseMaze();
+    file_name = chooseMaze(); //gets a valid maze
     if (file_name == "EXIT")
         return 0;
     else if (file_name == "MENU")
@@ -93,7 +93,7 @@ bool displayWinners(bool &menu, bool &winners)
         return 1;
     }
     else
-        file_name.insert(17, "_WINNERS");
+        file_name.insert(17, "_WINNERS"); //17 should be 7 if .cpp and .txt are in the same folder
     cout << endl;
     displayFile(file_name);
     cout << "\n\t\t\t\t0) EXIT" << endl;
@@ -102,7 +102,7 @@ bool displayWinners(bool &menu, bool &winners)
         cout << "Option: ";
         if (!readInteger(option))
             return 0;
-    } while (option != 0);
+    } while (option != 0); //waits for a valid input
     menu = true;
     winners = false;
     return 1;
