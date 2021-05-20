@@ -18,6 +18,28 @@ Player:: Player(int row, int col, char symbol){
     alive = true;
     cout << "non-default constructor player" << endl;
 }
-void Player:: test(){
-    cout << "OLA DO PLAYER"<< endl;
+
+int Player:: getRow() const{
+    return row;
+}
+
+int Player:: getCol() const{
+    return col;
+}
+
+char Player:: getSymbol() const{
+    return symbol;
+}
+
+bool Player:: isAlive() const{
+    return alive;
+}
+
+void Player:: setAsDead(){
+    alive = false;
+}
+
+void Player:: move(int x,int y){
+    this -> row += x;
+    this -> col += y;
 }

@@ -15,7 +15,7 @@ public:
    char getSymbol() const;
    bool isAlive() const;
    void setAsDead();
-   bool move(int x,int y);
+   void move(int x,int y);
    void test();
 
 private:

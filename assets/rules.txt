@@ -1,19 +1,26 @@
+                       ___  __  ____   ________
+                      / _ \/ / / / /  / __/ __/
+                     / , _/ /_/ / /__/ _/_\ \  
+                    /_/|_|\____/____/___/___/  
+                                                      
 The player is placed in a maze made up of high-voltage fences and posts.
-There are also some interceptor robots that will try to destroy the player.If the player touches the maze or any of these robots, that is the end of the game (and the player!).The robots are also destroyed when they touch the 
-fences/posts or when they collide with each other.
-Every time the player moves in any direction to a contiguous cell, each robot moves one cell closer to the new player location, in whichever direction is the shortest path.The robots have no vision sensors but they have an accurate odour sensor that allows them to follow the player!
-There is one hope: make the robots hit the maze or each other.If all of them are destroyed, the player wins.
+There are also some interceptor robots that will try to destroy the player.
+If the player touches the maze or any of these robots, that is the end of the game.
+The robots are also destroyed when they touch the fences/posts or when they collide with each other.
+Every time the player moves , each robot moves one cell closer!
+There are two options: exit the maze or kill all robots.
 
 In the draw of the maze:
-* = electrical fence or post;
-H = player (alive); h = player (dead); the player dies when he/she collides with a fence or a post, or is captured by a robot;
-R = robot (alive); r = robot (destroyed=dead/stuck); a dead robot is one that collided with a fence or a post; a stuck robot is one that collided with another robot (alive or destroyed)
+* = electrical fence or post; + = non-electrical post
+H = player (alive); h = player (dead);
+R = robot (alive); r = robot (destroyed=dead/stuck);
+O = exit;
 
-The movement is indicated by typing one of the letters indicated below(the position of each letter relatively to the players position indicates the movement that the player wants to do):
+The movement is indicated by typing one of the letters indicated below:
 
-                        Q               W               E
-                        A        players position       D
-                        Z               X               C
+                    Q               W               E
+                    A        players position       D
+                    Z               X               C
 
 The player has the option to stay in his/her current position by typing 'S'.
 

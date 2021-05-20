@@ -1,4 +1,5 @@
 #include "Maze.h"
+#include "Post.h"
 
 using namespace std;
 

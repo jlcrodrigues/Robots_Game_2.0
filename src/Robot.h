@@ -21,8 +21,7 @@ public:
    int getRow() const;
    int getCol() const;
    bool isAlive() const;
-   void setRow(int x);
-   void setCol(int y);
+   void move(int x,int y);
    void setAsDead();
    void test();
    //other methods
