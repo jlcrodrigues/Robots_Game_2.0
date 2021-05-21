@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include "Post.h"
+#include <vector>
 
 
 
@@ -19,7 +20,7 @@ public:
    // other methods
 private:
    int numRows, numCols;
-   // data structure that represents the posts
+   std:: vector<Post> posts;
 };
 
 #endif
