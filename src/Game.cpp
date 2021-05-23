@@ -67,11 +67,11 @@ void Game::showGameDisplay() const
 
 bool Game::drawRobot(int row, int col) const
 {
-    for (Robot robot : robots) //iterate through the posts
+    for (size_t i=0; i < robots.size();i++) 
     {
-        if (robot.getCol() == col && robot.getRow() == row)
+        if (robots.at(i).getCol() == col && robots.at(i).getRow() == row)
         {
-            cout << robot.getSymbol();
+            cout << robots.at(i).getSymbol();
             return 1;
         }
     }
@@ -80,11 +80,9 @@ bool Game::drawRobot(int row, int col) const
 
 void Game::moveRobots()
 {
-    for (Robot robot: robots)
+    for (size_t i=0; i < robots.size();i++)
     {
-        cout << "before : " << robot.getCol() << robot.getRow() << endl;
-        robot.move(player.getCol(), player.getRow());
-        cout << "after : " << robot.getCol() << robot.getRow() << endl;
+        robots.at(i).move(player.getCol(), player.getRow());
     }
 }
 
@@ -98,16 +96,13 @@ bool Game::play()
 {
     char move;
     while (1) //while
-    {
+    {   
         showGameDisplay();
-        for (Robot r: robots)
-        {
-            cout << r.getCol() << r.getRow() << endl;
-        }
         do
-        {
-            cout << "Perform a movement: ";
+        {   
+            cout << "\nPerform a movement: ";
             cin >> move;
+            cout << endl;
             cin.ignore(100000, '\n');
             if (cin.fail() && cin.eof()) //check if ctrl + z was pressed
             {

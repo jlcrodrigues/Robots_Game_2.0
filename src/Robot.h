@@ -15,6 +15,7 @@ public:
       STUCK,
       DEAD
    };
+   Robot();
    Robot(int row, int col);
    int getID() const;
    char getSymbol() const; // get char representation of robot (R if alive, r if dead)

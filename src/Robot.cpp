@@ -4,12 +4,15 @@ using namespace std;
 
 int Robot:: robotCounter=0;
 
+Robot:: Robot(){
+}
+
 Robot:: Robot(int row, int col){
     this -> row = row;
     this -> col = col;
     this -> id = robotCounter;
     robotCounter ++;
-    cout << "non-default robot" << endl;
+    this-> alive = true;
 }
 
 void Robot:: test(){
@@ -43,14 +46,18 @@ bool Robot:: isAlive() const{
 }
 
 void Robot:: move(int x,int y){
-    if (col < x)
+    if (col < x){
         col++;
-    else if (col > x)
+    }
+    else if (col > x){
         col--;
-    if (row < y)
+    }
+    if (row < y){
         row++;
-    else if (row > y)
+    }
+    else if (row > y){
         row--;
+    }
 }
 
 void Robot:: setAsDead(){

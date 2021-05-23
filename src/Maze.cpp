@@ -6,13 +6,11 @@ using namespace std;
 Maze:: Maze(){
     this -> numRows = 10;
     this -> numCols = 10;
-    cout << "default constructor maze" << endl;
 }
 
 Maze:: Maze(int numRows, int numCols){
     this -> numRows = numRows;
     this -> numCols = numCols;
-    cout << "non-default constructor maze" << endl;
 }
 
 void Maze:: test(){
@@ -26,11 +24,11 @@ void Maze:: addPost(int row, int col, char type)
 
 bool Maze:: drawPost(int row, int col) const
 {
-    for (Post post: posts) //iterate through the posts
+    for (size_t i=0; i < posts.size();i++) //iterate through the posts
     {
-        if (post.getCol() == col && post.getRow() == row)
+        if (posts.at(i).getCol() == col && posts.at(i).getRow() == row)
         {
-            cout << post.getSymbol();
+            cout << posts.at(i).getSymbol();
             return 1;
         }
     }

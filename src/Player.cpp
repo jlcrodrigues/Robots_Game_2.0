@@ -8,7 +8,6 @@ Player:: Player(){
     this -> col = 0;
     this -> symbol = 'H';
     alive = true;
-    cout << "default constructor player" << endl;
 }
 
 Player:: Player(int row, int col, char symbol){
@@ -16,7 +15,6 @@ Player:: Player(int row, int col, char symbol){
     this -> col = col;
     this -> symbol = symbol;
     alive = true;
-    cout << "non-default constructor player" << endl;
 }
 
 int Player:: getRow() const{
