@@ -43,7 +43,6 @@ bool Robot:: isAlive() const{
 }
 
 void Robot:: move(int x,int y){
-    cout << col << row << endl;
     if (col < x)
         col++;
     else if (col > x)
@@ -52,7 +51,6 @@ void Robot:: move(int x,int y){
         row++;
     else if (row > y)
         row--;
-    cout << col << row << endl;
 }
 
 void Robot:: setAsDead(){

@@ -82,7 +82,9 @@ void Game::moveRobots()
 {
     for (Robot robot: robots)
     {
+        cout << "before : " << robot.getCol() << robot.getRow() << endl;
         robot.move(player.getCol(), player.getRow());
+        cout << "after : " << robot.getCol() << robot.getRow() << endl;
     }
 }
 
@@ -98,6 +100,10 @@ bool Game::play()
     while (1) //while
     {
         showGameDisplay();
+        for (Robot r: robots)
+        {
+            cout << r.getCol() << r.getRow() << endl;
+        }
         do
         {
             cout << "Perform a movement: ";
