@@ -44,7 +44,7 @@ Game::Game(const std::string &file_name)
             }
             else if (column == 'H')
             {
-                player.move(j, i);
+                player.setPos(i, j);
             }
         }
         maze_file.get(column); //reads '\n' so it can be ignored
@@ -78,6 +78,14 @@ bool Game::drawRobot(int row, int col) const
     return 0;
 }
 
+void Game::moveRobots()
+{
+    for (Robot robot: robots)
+    {
+        robot.move(player.getCol(), player.getRow());
+    }
+}
+
 void Game::test()
 {
     cout << "OLA DO GAME" << endl;
@@ -86,5 +94,21 @@ void Game::test()
 
 bool Game::play()
 {
-    showGameDisplay();
+    char move;
+    while (1) //while
+    {
+        showGameDisplay();
+        do
+        {
+            cout << "Perform a movement: ";
+            cin >> move;
+            cin.ignore(100000, '\n');
+            if (cin.fail() && cin.eof()) //check if ctrl + z was pressed
+            {
+                cout << "EXIT";
+                return 0;
+            }
+        } while (!player.move(move));
+        moveRobots();
+    }
 }

@@ -39,9 +39,47 @@ void Player:: setAsDead(){
     alive = false;
 }
 
-void Player:: move(int x,int y){
-    this -> row += x;
-    this -> col += y;
+void Player::setPos(int row, int col)
+{
+    this -> row = row;
+    this -> col = col;
+}
+
+bool Player:: move(char movement){
+    switch (tolower(movement))
+    {
+    case 'q':
+        col--, row--;
+        break;
+    case 'w':
+        row--;
+        break;
+    case 'e':
+        col++, row--;
+        break;
+    case 'a':
+        col--;
+        break;
+    case 's':
+        break;
+    case 'd':
+        col++;
+        break;
+    case 'z':
+        col--, row++;
+        break;
+    case 'x':
+        row++;
+        break;
+    case 'c':
+        col++, row++;
+        break;
+    default:
+        cout << "Invalid movement!" << endl
+             << endl;
+        return 0;
+    }
+    return 1;
 }
 
 bool Player:: drawPlayer(int row, int col) const

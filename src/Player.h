@@ -15,7 +15,8 @@ public:
    char getSymbol() const;
    bool isAlive() const;
    void setAsDead();
-   void move(int x,int y);
+   void setPos(int row, int col);
+   bool move(char movement);
    void test();
    bool drawPlayer(int row, int col) const;
 
