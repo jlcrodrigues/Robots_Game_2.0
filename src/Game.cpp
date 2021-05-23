@@ -58,7 +58,7 @@ void Game::showGameDisplay() const
     {
         for (int col = 0; col < maze.getnumCols(); col++)
         {
-            if (!maze.drawPost(row, col) && !drawRobot(row, col) && !player.drawPlayer(row, col))
+            if (!maze.drawPost(row, col) && !player.drawPlayer(row, col) && !drawRobot(row, col))
                 cout << ' ';
         }
         cout << '\n';
@@ -86,11 +86,16 @@ void Game::moveRobots()
     }
 }
 
+bool Game:: collide(Robot &robot, Player &player){
+    return (robot.getCol()==player.getCol() && robot.getRow()==player.getRow());
+}
+
 void Game::test()
 {
     cout << "OLA DO GAME" << endl;
     //cout << maze.numCols << endl;
 }
+
 
 bool Game::play()
 {
@@ -111,5 +116,13 @@ bool Game::play()
             }
         } while (!player.move(move));
         moveRobots();
+        
+        for (size_t i=0; i < robots.size();i++){    //check if player and robot collide
+            if (collide(robots.at(i),player)){
+                player.setAsDead();
+                showGameDisplay();
+                return 0;
+            }
+        }
     }
 }

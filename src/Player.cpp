@@ -35,6 +35,7 @@ bool Player:: isAlive() const{
 
 void Player:: setAsDead(){
     alive = false;
+    symbol = 'h';
 }
 
 void Player::setPos(int row, int col)

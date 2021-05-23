@@ -18,6 +18,7 @@ int main(){
     bool rules = false;
     bool play = false;
     bool winners = false;
+    bool resultado;
     string maze_file;
 
     while (true)
@@ -43,7 +44,16 @@ int main(){
                 play = false;
             }
             Game game(maze_file);
-            game.play();
+            resultado = game.play();
+            if (resultado){
+                
+                cout << "ganhou" << endl;
+                return 0;
+            }
+            else{
+                cout << "perdeu" << endl;
+                return 0;
+            }
         }
         if (winners)
         {
