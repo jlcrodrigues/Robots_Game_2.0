@@ -11,12 +11,13 @@
 #include "Post.h"
 #include "Player.h"
 #include "Maze.h"
+#include <fstream>
 
 
 class Game
 {
 public:
-   Game(const std::string &filename);
+   Game(const std::string &file_name);
    // This constructor should initialize the Maze, the vector of Robots, and the Player,
    // using the chars read from the file
    bool play(); // implements the game loop; returns true if player wins, false otherwise
@@ -26,6 +27,7 @@ public:
 
 private:
    void showGameDisplay() const;
+   bool drawRobot(int row, int col) const;
    bool collide(Robot &robot, Post &post);     // check if robot collided with post (and possibly set it as dead)
    bool collide(Robot &robot, Player &player); // check if human and robot collided (and possibly set human as dead)
                                                // other methods, for example:

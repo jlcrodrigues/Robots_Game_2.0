@@ -6,7 +6,7 @@ using namespace std;
 Player:: Player(){
     this -> row = 0;
     this -> col = 0;
-    this -> symbol = 'h';
+    this -> symbol = 'H';
     alive = true;
     cout << "default constructor player" << endl;
 }
@@ -42,4 +42,14 @@ void Player:: setAsDead(){
 void Player:: move(int x,int y){
     this -> row += x;
     this -> col += y;
+}
+
+bool Player:: drawPlayer(int row, int col) const
+{
+    if (this -> row == row && this -> col == col)
+    {
+        cout << symbol;
+        return 1;
+    }
+    return 0;
 }

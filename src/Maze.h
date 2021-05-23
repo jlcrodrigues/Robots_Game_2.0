@@ -14,8 +14,12 @@ class Maze
 public:
    Maze();
    Maze(int numRows, int numCols);
-   bool addPost(const Post &post, const int &x, const int &y, const  int getnumRows()) const;
+   void addPost(int row, int col, char type);
+   bool drawPost(int row, int col) const;
    int getnumCols() const;
+   int getnumRows() const;
+   void setnumCols(int numCols);
+   void setnumRows(int numRows);
    void test();
    // other methods
 private:

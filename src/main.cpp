@@ -42,7 +42,8 @@ int main(){
                 menu = true;
                 play = false;
             }
-            //criar o objeto Game
+            Game game(maze_file);
+            game.play();
         }
         if (winners)
         {

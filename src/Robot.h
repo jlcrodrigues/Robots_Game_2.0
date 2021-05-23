@@ -21,7 +21,7 @@ public:
    int getRow() const;
    int getCol() const;
    bool isAlive() const;
-   void move(int x,int y);
+   void move(int x,int y); //move towards (x,y)
    void setAsDead();
    void test();
    //other methods

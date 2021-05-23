@@ -17,6 +17,7 @@ public:
    void setAsDead();
    void move(int x,int y);
    void test();
+   bool drawPlayer(int row, int col) const;
 
 private:
    int row, col;
