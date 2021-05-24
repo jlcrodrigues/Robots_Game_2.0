@@ -206,13 +206,6 @@ void displayWinner(string maze_file, string finish_time)
     writing.close();
 }
 
-/**
-    Resets all parameters to their default value.
-    @param game The game's object
-    @param play Stores the current display state.
-    @param menu Stores the current display state.
-    @param reset_time Stores the current reset time state.
-*/
 void restartGame(bool &play, bool &menu, bool &reset_time)
 {
     //game.reset();

@@ -69,8 +69,6 @@ void displayWinner(std::string maze_file, std::string finish_time);
 
 /**
     Resets all parameters to their default value.
-    @param maze Multidimensional vector where maze is stored.
-    @param robots Vector where all the robots are stored.
     @param play Stores the current display state.
     @param menu Stores the current display state.
     @param reset_time Stores the current reset time state.
