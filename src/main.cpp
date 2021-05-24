@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -20,6 +21,10 @@ int main(){
     bool winners = false;
     bool resultado;
     string maze_file;
+
+    time_t time_counter;
+    bool reset_time = true;
+    string finish_time;
 
     while (true)
     {
@@ -35,6 +40,11 @@ int main(){
         }
         if (play)
         {
+            time_t current_time = time(nullptr);
+            if (reset_time){
+                time_counter = current_time;    // resets the timer
+                reset_time = false;   
+            }
             maze_file = chooseMaze();
             if (maze_file == "EXIT")
                 return 0;
@@ -46,13 +56,14 @@ int main(){
             Game game(maze_file);
             resultado = game.play();
             if (resultado){
-                
-                cout << "ganhou" << endl;
-                return 0;
+                finish_time = to_string(time(nullptr)- time_counter);
+                cout << "It took you " << finish_time << "s." << endl;
+                displayWinner(maze_file, finish_time);
+                restartGame(play, menu, reset_time);
             }
             else{
-                cout << "perdeu" << endl;
-                return 0;
+                cout << "YOU LOST!" << endl;
+                restartGame(play, menu, reset_time);
             }
         }
         if (winners)

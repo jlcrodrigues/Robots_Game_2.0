@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include "Game.h"
 
 /**
     Reads an integer and tests if it is valid.
@@ -51,5 +53,28 @@ bool displayWinners(bool &menu, bool &winners);
     @return Returns the chosen maze's file name.
 */
 std::string chooseMaze();
+
+/**
+    Sorts all the entries on the scoreboard so it can be written.
+    @param scoreboard vector<string> with all the winners
+*/
+void sortScoreboard(std::vector<std::string>& scoreboard);
+
+/**
+    Asks for a name and writes it on the scoreboard file.
+    @param maze_file Played maze file's name.
+    @param finish_time Player's score.
+*/
+void displayWinner(std::string maze_file, std::string finish_time);
+
+/**
+    Resets all parameters to their default value.
+    @param maze Multidimensional vector where maze is stored.
+    @param robots Vector where all the robots are stored.
+    @param play Stores the current display state.
+    @param menu Stores the current display state.
+    @param reset_time Stores the current reset time state.
+*/
+void restartGame(bool &play, bool &menu, bool &reset_time);
 
 #endif

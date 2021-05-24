@@ -143,3 +143,80 @@ string chooseMaze()
         }
     }
 }
+
+void sortScoreboard(vector<string>& scoreboard)
+{
+    for (size_t i = 0; i < scoreboard.size();i++){                 // reorder the scoreboard by time      
+        for (size_t j = i + 1; j < scoreboard.size();j++){
+            
+            string substr1,substr2;
+            int time1,time2;
+
+            time1 = stoi(scoreboard.at(i).substr(18));       // change to integer
+            time2 = stoi(scoreboard.at(j).substr(18));
+
+            if(time2 < time1){                                  // swap if time2 less than time 1
+                string temp ;
+                temp = scoreboard.at(i);
+                scoreboard.at(i) = scoreboard.at(j);
+                scoreboard.at(j) = temp;
+            } 
+        }
+    } 
+}
+
+void displayWinner(string maze_file, string finish_time)
+{
+    string winner;
+    do 
+    {
+        cout << "Insert your name (max 15 characters): ";
+        getline(cin,winner);
+    } while (winner.size() > 15);
+    winner.insert(winner.size(), 15 - winner.size(), ' '); //fill with ' '
+    cout << endl;
+
+    maze_file.insert(17, "_WINNERS");
+
+    ofstream writing;  
+    ifstream reading;
+
+    reading.open(maze_file);
+    string line;
+    vector<string> scoreboard; //list of all the previous winners
+    while (getline(reading, line))
+    {
+        if (line != "----------------------" && line != "Player         - Time")
+            scoreboard.push_back(line);
+    }
+    reading.close();
+    scoreboard.push_back(winner + "-  " + finish_time); //add the winner to the list
+
+    sortScoreboard(scoreboard);
+
+    writing.open(maze_file);
+    writing << "Player         - Time\n" << "----------------------\n";
+    cout << "Player         - Time\n" << "----------------------\n";
+    for (size_t i = 0; i < scoreboard.size(); i++)
+    {
+        writing << scoreboard[i] << endl;
+        cout << scoreboard[i] << endl;
+    }
+    cout << endl;
+    writing.close();
+}
+
+/**
+    Resets all parameters to their default value.
+    @param game The game's object
+    @param play Stores the current display state.
+    @param menu Stores the current display state.
+    @param reset_time Stores the current reset time state.
+*/
+void restartGame(bool &play, bool &menu, bool &reset_time)
+{
+    //game.reset();
+    play = false;
+    menu = true; //return to the menu
+    reset_time = true; // resets the timer
+}
