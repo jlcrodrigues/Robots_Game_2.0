@@ -34,7 +34,7 @@ Game::Game(const std::string &file_name)
         for (int j = 0; j < width; j++) //iterates the columns
         {
             maze_file.get(column); //reads a character
-            if (column == '+' || column == '*')
+            if (column == '+' || column == '*' || column == 'O')
             {
                 maze.addPost(i, j, column);
             }
@@ -59,8 +59,7 @@ void Game::showGameDisplay() const
         for (int col = 0; col < maze.getnumCols(); col++)
         {
             if (!player.drawPlayer(row, col) && !drawRobot(row, col))
-                cout << maze.charPost(row,col);
-
+                cout << maze.charPost(row, col);
         }
         cout << '\n';
     }
@@ -79,30 +78,61 @@ bool Game::drawRobot(int row, int col) const
     return 0;
 }
 
+bool Game::hasWon()
+{
+    int dead_robots;
+    for (int i = 0; i < robots.size(); i++)
+    {
+        if (!robots.at(i).isAlive())
+            dead_robots++;
+    }
+    if (dead_robots == robots.size())
+        return 1;
+
+    if (maze.charPost(player.getRow(), player.getCol()) == 'O')
+        return 1;
+    return 0;
+}
+
 void Game::moveRobots()
 {
     for (size_t i = 0; i < robots.size(); i++)
-    {   
+    {
         char post;
-        Robot temp =robots.at(i);
+        Robot temp = robots.at(i);
         robots.at(i).move(player.getCol(), player.getRow());
-        post = maze.charPost(robots.at(i).getRow(),robots.at(i).getCol());
-        if (post == '+'){
+        post = maze.charPost(robots.at(i).getRow(), robots.at(i).getCol());
+        if (post == '+')
+        {
             robots.at(i).setAsDead();
         }
-        if (post == '*'){
+        if (post == '*')
+        {
             robots.at(i) = temp;
             robots.at(i).setAsDead();
         }
-    }   
+        collide(robots.at(i));
+    }
+}
+
+void Game::collide(Robot &robot)
+{
+    for (size_t i = 0; i < robots.size(); i++)
+    {
+        if (robot.getCol() == robots.at(i).getCol() &&
+            robot.getRow() == robots.at(i).getRow() &&
+            robot.getID() != robots.at(i).getID())
+        {
+            robot.setAsDead();
+            robots.at(i).setAsDead();
+        }
+    }
 }
 
 bool Game::collide(Robot &robot, Player &player)
 {
     return (robot.getCol() == player.getCol() && robot.getRow() == player.getRow());
 }
-
-
 
 void Game::test()
 {
@@ -113,10 +143,11 @@ void Game::test()
 bool Game::play()
 {
     char move;
+    string game_state;
     while (1) //while
     {
         showGameDisplay();
-        Player temp = player;
+        Player temp_player = player;
         char post;
         do
         {
@@ -131,10 +162,16 @@ bool Game::play()
             }
         } while (!player.move(move));
         //verificar move player
-        post = maze.charPost(player.getRow(),player.getCol());
-        if (post == '+'){
-            player = temp;
+        post = maze.charPost(player.getRow(), player.getCol());
+        if (post == '+')
+        {
+            player = temp_player;
+            cout << "Invalid movement!\n";
             continue;
+        }
+        if (post == '*')
+        {
+            game_state = "lost";
         }
         moveRobots();
 
@@ -142,10 +179,21 @@ bool Game::play()
         { //check if player and robot collide
             if (collide(robots.at(i), player))
             {
-                player.setAsDead();
-                showGameDisplay();
-                return 0;
+                player = temp_player;
             }
+        }
+
+        if (hasWon())
+        {
+            return 1;
+        }
+
+        if (game_state == "lost")
+        {
+            game_state = "lost";
+            player.setAsDead();
+            showGameDisplay();
+            return 0;
         }
     }
 }

@@ -28,7 +28,9 @@ public:
 private:
    void showGameDisplay() const;
    bool drawRobot(int row, int col) const;
-   void moveRobots();    
+   void moveRobots();
+   bool hasWon();
+   void collide(Robot &robot);    
    bool collide(Robot &robot, Player &player); // check if human and robot collided (and possibly set human as dead)
                                                // other methods, for example:
                                                // to check if player is trying to move to a valid place
