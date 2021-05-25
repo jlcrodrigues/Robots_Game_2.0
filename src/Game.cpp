@@ -186,6 +186,7 @@ bool Game::play()
 
         if (hasWon())
         {
+            showGameDisplay();
             return 1;
         }
 

@@ -24,4 +24,4 @@ The movement is indicated by typing one of the letters indicated below:
 
 The player has the option to stay in his/her current position by typing 'S'.
 
-                                0)Menu
+                                0) Menu

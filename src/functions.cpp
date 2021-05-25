@@ -96,7 +96,7 @@ bool displayWinners(bool &menu, bool &winners)
         file_name.insert(17, "_WINNERS"); //17 should be 7 if .cpp and .txt are in the same folder
     cout << endl;
     displayFile(file_name);
-    cout << "\n\t\t\t\t0) EXIT" << endl;
+    cout << "\n\t\t\t\t0) Menu" << endl;
     do
     {
         cout << "Option: ";

@@ -52,11 +52,13 @@ int main(){
             {
                 menu = true;
                 play = false;
+                continue;
             }
             Game game(maze_file);
             resultado = game.play();
             if (resultado){
                 finish_time = to_string(time(nullptr)- time_counter);
+                cout << "You WON!!" << endl;
                 cout << "It took you " << finish_time << "s." << endl;
                 displayWinner(maze_file, finish_time);
                 restartGame(play, menu, reset_time);
