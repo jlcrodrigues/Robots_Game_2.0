@@ -22,18 +22,18 @@ void Maze:: addPost(int row, int col, char type)
     posts.push_back(Post(row, col, type));
 }
 
-bool Maze:: drawPost(int row, int col) const
+char Maze:: charPost(int row, int col) const
 {
     for (size_t i=0; i < posts.size();i++) //iterate through the posts
     {
         if (posts.at(i).getCol() == col && posts.at(i).getRow() == row)
-        {
-            cout << posts.at(i).getSymbol();
-            return 1;
+        {   
+            return posts.at(i).getSymbol() ;
         }
     }
-    return 0;
+    return ' ';
 }
+
 
 int Maze:: getnumCols() const{
     return numCols;

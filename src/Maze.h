@@ -15,7 +15,7 @@ public:
    Maze();
    Maze(int numRows, int numCols);
    void addPost(int row, int col, char type);
-   bool drawPost(int row, int col) const;
+   char charPost(int row, int col) const;
    int getnumCols() const;
    int getnumRows() const;
    void setnumCols(int numCols);

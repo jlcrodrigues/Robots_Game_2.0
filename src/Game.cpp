@@ -58,8 +58,9 @@ void Game::showGameDisplay() const
     {
         for (int col = 0; col < maze.getnumCols(); col++)
         {
-            if (!maze.drawPost(row, col) && !player.drawPlayer(row, col) && !drawRobot(row, col))
-                cout << ' ';
+            if (!player.drawPlayer(row, col) && !drawRobot(row, col))
+                cout << maze.charPost(row,col);
+
         }
         cout << '\n';
     }
@@ -67,7 +68,7 @@ void Game::showGameDisplay() const
 
 bool Game::drawRobot(int row, int col) const
 {
-    for (size_t i=0; i < robots.size();i++) 
+    for (size_t i = 0; i < robots.size(); i++)
     {
         if (robots.at(i).getCol() == col && robots.at(i).getRow() == row)
         {
@@ -80,15 +81,28 @@ bool Game::drawRobot(int row, int col) const
 
 void Game::moveRobots()
 {
-    for (size_t i=0; i < robots.size();i++)
-    {
+    for (size_t i = 0; i < robots.size(); i++)
+    {   
+        char post;
+        Robot temp =robots.at(i);
         robots.at(i).move(player.getCol(), player.getRow());
-    }
+        post = maze.charPost(robots.at(i).getRow(),robots.at(i).getCol());
+        if (post == '+'){
+            robots.at(i).setAsDead();
+        }
+        if (post == '*'){
+            robots.at(i) = temp;
+            robots.at(i).setAsDead();
+        }
+    }   
 }
 
-bool Game:: collide(Robot &robot, Player &player){
-    return (robot.getCol()==player.getCol() && robot.getRow()==player.getRow());
+bool Game::collide(Robot &robot, Player &player)
+{
+    return (robot.getCol() == player.getCol() && robot.getRow() == player.getRow());
 }
+
+
 
 void Game::test()
 {
@@ -96,15 +110,16 @@ void Game::test()
     //cout << maze.numCols << endl;
 }
 
-
 bool Game::play()
 {
     char move;
     while (1) //while
-    {   
+    {
         showGameDisplay();
+        Player temp = player;
+        char post;
         do
-        {   
+        {
             cout << "\nPerform a movement: ";
             cin >> move;
             cout << endl;
@@ -115,10 +130,18 @@ bool Game::play()
                 return 0;
             }
         } while (!player.move(move));
+        //verificar move player
+        post = maze.charPost(player.getRow(),player.getCol());
+        if (post == '+'){
+            player = temp;
+            continue;
+        }
         moveRobots();
-        
-        for (size_t i=0; i < robots.size();i++){    //check if player and robot collide
-            if (collide(robots.at(i),player)){
+
+        for (size_t i = 0; i < robots.size(); i++)
+        { //check if player and robot collide
+            if (collide(robots.at(i), player))
+            {
                 player.setAsDead();
                 showGameDisplay();
                 return 0;

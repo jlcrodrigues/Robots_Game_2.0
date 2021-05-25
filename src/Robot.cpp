@@ -2,66 +2,83 @@
 
 using namespace std;
 
-int Robot:: robotCounter=0;
+int Robot::robotCounter = 0;
 
-Robot:: Robot(){
+Robot::Robot()
+{
 }
 
-Robot:: Robot(int row, int col){
-    this -> row = row;
-    this -> col = col;
-    this -> id = robotCounter;
-    robotCounter ++;
-    this-> alive = true;
+Robot::Robot(int row, int col)
+{
+    this->row = row;
+    this->col = col;
+    this->id = robotCounter;
+    robotCounter++;
+    this->alive = true;
 }
 
-void Robot:: test(){
-    cout << "OLA DO ROBOT"<< endl;
-    cout << "ID:" << id<< endl;
+void Robot::test()
+{
+    cout << "OLA DO ROBOT" << endl;
+    cout << "ID:" << id << endl;
 }
 
-int Robot:: getID() const{
+int Robot::getID() const
+{
     return id;
 }
 
-int Robot:: getRow() const{
+int Robot::getRow() const
+{
     return row;
 }
 
-int Robot:: getCol() const{
+int Robot::getCol() const
+{
     return col;
 }
 
-char Robot:: getSymbol() const{
-    if (alive){
+char Robot::getSymbol() const
+{
+    if (alive)
+    {
         return 'R';
     }
-    else{
+    else
+    {
         return 'r';
-    } 
+    }
 }
 
-bool Robot:: isAlive() const{
+bool Robot::isAlive() const
+{
     return alive;
 }
 
-void Robot:: move(int x,int y){
-    if (col < x){
-        col++;
-    }
-    else if (col > x){
-        col--;
-    }
-    if (row < y){
-        row++;
-    }
-    else if (row > y){
-        row--;
+void Robot::move(int x, int y)
+{
+    if (alive)
+    {
+        if (col < x)
+        {
+            col++;
+        }
+        else if (col > x)
+        {
+            col--;
+        }
+        if (row < y)
+        {
+            row++;
+        }
+        else if (row > y)
+        {
+            row--;
+        }
     }
 }
 
-void Robot:: setAsDead(){
+void Robot::setAsDead()
+{
     alive = false;
 }
-
-
