@@ -180,7 +180,7 @@ bool Game::play()
         { //check if player and robot collide
             if (collide(robots.at(i), player))
             {
-                player = temp_player;
+                game_state = "lost";
             }
         }
 
