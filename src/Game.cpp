@@ -80,12 +80,13 @@ bool Game::drawRobot(int row, int col) const
 
 bool Game::hasWon()
 {
-    int dead_robots;
+    int dead_robots = 0;
     for (int i = 0; i < robots.size(); i++)
     {
         if (!robots.at(i).isAlive())
             dead_robots++;
     }
+    cout <<  dead_robots << endl;
     if (dead_robots == robots.size())
         return 1;
 
