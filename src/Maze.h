@@ -1,13 +1,9 @@
 #ifndef MAZE_H
 #define MAZE_H
 
-
-
 #include <iostream>
 #include "Post.h"
 #include <vector>
-
-
 
 class Maze
 {
@@ -20,11 +16,10 @@ public:
    int getnumRows() const;
    void setnumCols(int numCols);
    void setnumRows(int numRows);
-   void test();
-   // other methods
+
 private:
    int numRows, numCols;
-   std:: vector<Post> posts;
+   std::vector<Post> posts;
 };
 
 #endif

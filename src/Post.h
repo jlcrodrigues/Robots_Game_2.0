@@ -10,15 +10,12 @@ public:
    Post(int row, int col, char type);
    int getRow() const;
    int getCol() const;
-   char getSymbol() const; // get char representation of Post
+   char getSymbol() const;
    bool isElectrified() const;
-   void test();
-   //other methods
+
 private:
    int row, col;
-   char type; // '*' - electrified; '+'- non-electrified
-              // other attributes (?)
-              // could also have a state, like the robot(?)
+   char type;
 };
 
 #endif

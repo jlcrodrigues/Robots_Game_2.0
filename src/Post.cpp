@@ -1,41 +1,69 @@
 #include "Post.h"
 
-
 using namespace std;
 
-Post:: Post(){
-    this -> row = 0;
-    this -> col = 0;
-    this -> type = '+';
+/**
+ * @brief Post default constructor
+ */
+Post::Post()
+{
+    this->row = 0;
+    this->col = 0;
+    this->type = '+';
 }
 
-Post:: Post(int row, int col, char type){
-    this -> row = row;
-    this -> col = col;
-    this -> type = type;
+/**
+ * @brief Post constructor that creates a post with these attributes
+ * @param row
+ * @param col
+ * @param type
+ */
+Post::Post(int row, int col, char type)
+{
+    this->row = row;
+    this->col = col;
+    this->type = type;
 }
 
-void Post:: test(){
-    cout << "OLA DO POST"<< endl;
-}
-
-int Post:: getRow() const{
+/**
+ * @brief Checks post row
+ * @return Row where the post is
+ */
+int Post::getRow() const
+{
     return row;
 }
 
-int Post:: getCol() const{
+/**
+ * @brief Checks post column
+ * @return Column where the post is
+ */
+int Post::getCol() const
+{
     return col;
 }
 
-char Post:: getSymbol() const{
+/**
+ * @brief Checks post symbol
+ * @return Symbol of the post 
+ */
+char Post::getSymbol() const
+{
     return type;
 }
 
-bool Post:: isElectrified() const{
-    if (type=='+'){
+/**
+ * @brief Checks post eletricity
+ * @return If the post is electrified
+ */
+bool Post::isElectrified() const
+{
+    if (type == '+')
+    { //if non-eletrified
         return false;
     }
-    else{
+    else
+    {
         return true;
     }
 }

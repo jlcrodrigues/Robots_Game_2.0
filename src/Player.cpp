@@ -1,53 +1,98 @@
 #include "Player.h"
 
-
 using namespace std;
 
-Player:: Player(){
-    this -> row = 0;
-    this -> col = 0;
-    this -> symbol = 'H';
+/**
+ * @brief Player default constructor
+ */
+Player::Player()
+{
+    this->row = 0;
+    this->col = 0;
+    this->symbol = 'H';
     alive = true;
 }
 
-Player:: Player(int row, int col, char symbol){
-    this -> row = row;
-    this -> col = col;
-    this -> symbol = symbol;
+/**
+ * @brief Player constructor that creates a player in a certain position
+ * @param row
+ * @param col
+ * @param symbol
+ */
+Player::Player(int row, int col, char symbol)
+{
+    this->row = row;
+    this->col = col;
+    this->symbol = symbol;
     alive = true;
 }
 
-int Player:: getRow() const{
+/**
+ * @brief Checks row of player
+ * @return Row where the player is
+ */
+int Player::getRow() const
+{
     return row;
 }
 
-int Player:: getCol() const{
+/**
+ * @brief Checks column of player
+ * @return Column where the player is
+ */
+int Player::getCol() const
+{
     return col;
 }
 
-char Player:: getSymbol() const{
+/**
+ * @brief Checks symbol of player
+ * @return Symbol of the player 
+ */
+char Player::getSymbol() const
+{
     return symbol;
 }
 
-bool Player:: isAlive() const{
+/**
+ * @brief Checks player status 
+ * @return if player is alive
+ */
+bool Player::isAlive() const
+{
     return alive;
 }
 
-void Player:: setAsDead(){
+/**
+ * @brief Sets the player as dead
+ */
+void Player::setAsDead()
+{
     alive = false;
     symbol = 'h';
 }
 
+/**
+ * @brief Changes player position
+ * @param row
+ * @param col
+ */
 void Player::setPos(int row, int col)
 {
-    this -> row = row;
-    this -> col = col;
+    this->row = row;
+    this->col = col;
 }
 
-bool Player:: move(char movement){
-    switch (tolower(movement))
+/**
+ * @brief Moves the player
+ * @param movement
+ * @return if input for movement was valid
+ */
+bool Player::move(char movement)
+{
+    switch (tolower(movement)) //switch to lowercase
     {
-    case 'q':
+    case 'q': //apply movement rules
         col--, row--;
         break;
     case 'w':
@@ -81,9 +126,15 @@ bool Player:: move(char movement){
     return 1;
 }
 
-bool Player:: drawPlayer(int row, int col) const
+/**
+ * @brief Draws the player on the screen
+ * @param row
+ * @param col
+ * @return if player was found in that position
+ */
+bool Player::drawPlayer(int row, int col) const
 {
-    if (this -> row == row && this -> col == col)
+    if (this->row == row && this->col == col) //if player in this position
     {
         cout << symbol;
         return 1;

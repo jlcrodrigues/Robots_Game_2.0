@@ -1,8 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-
-
 #include <iostream>
 
 class Player
@@ -17,7 +15,6 @@ public:
    void setAsDead();
    void setPos(int row, int col);
    bool move(char movement);
-   void test();
    bool drawPlayer(int row, int col) const;
 
 private:

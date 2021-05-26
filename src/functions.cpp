@@ -29,15 +29,15 @@ bool readInteger(int &input)
 
 void displayFile(string file_name)
 {
-    ifstream file(file_name);
+    ifstream file(file_name); 
     cout << endl;
-    cout << file.rdbuf();
+    cout << file.rdbuf(); //reads and displays the file
 }
 
 bool displayMenu(string file_name, bool &menu, bool &rules, bool &play, bool &winners)
 {
     int menu_option;
-    displayFile(file_name);
+    displayFile(file_name); //displays the menu
     do
     {
         cout << "Option: ";
@@ -67,7 +67,7 @@ bool displayMenu(string file_name, bool &menu, bool &rules, bool &play, bool &wi
 bool displayRules(string file_name, bool &menu, bool &rules)
 {
     int option;
-    displayFile(file_name);
+    displayFile(file_name); //displays rules
     do
     {
         cout << "Option: ";
@@ -86,16 +86,16 @@ bool displayWinners(bool &menu, bool &winners)
     file_name = chooseMaze(); //gets a valid maze
     if (file_name == "EXIT")
         return 0;
-    else if (file_name == "MENU")
+    else if (file_name == "MENU") //return to menu
     {
         menu = true;
         winners = false;
         return 1;
     }
     else
-        file_name.insert(7, "_WINNERS"); //17 should be 7 if .cpp and .txt are in the same folder
+        file_name.insert(7, "_WINNERS"); //create winners .txt
     cout << endl;
-    displayFile(file_name);
+    displayFile(file_name); //display winners
     cout << "\n\t\t\t\t0) Menu" << endl;
     do
     {
@@ -116,7 +116,7 @@ string chooseMaze()
     {
         cout << "\nChoose a maze (input 0 to return to main menu) :  ";
 
-        if (!readInteger(maze_number))
+        if (!readInteger(maze_number)) //ctrl+z 
             return "EXIT";
 
         string file_name;
@@ -192,7 +192,7 @@ void displayWinner(string maze_file, string finish_time)
     reading.close();
     scoreboard.push_back(winner + "-  " + finish_time); //add the winner to the list
 
-    sortScoreboard(scoreboard);
+    sortScoreboard(scoreboard); //sort the scoreboard
 
     writing.open(maze_file);
     writing << "Player         - Time\n" << "----------------------\n";
@@ -208,7 +208,6 @@ void displayWinner(string maze_file, string finish_time)
 
 void restartGame(bool &play, bool &menu, bool &reset_time)
 {
-    //game.reset();
     play = false;
     menu = true; //return to the menu
     reset_time = true; // resets the timer

@@ -29,7 +29,7 @@ void displayFile(std::string file_name);
     @param winners True if the winners should be displayed.
     @return Returns 0 if the game should close 1 otherwise.
 */
-bool displayMenu(std::string file_name, bool& menu, bool& rules, bool& play, bool& winners);
+bool displayMenu(std::string file_name, bool &menu, bool &rules, bool &play, bool &winners);
 
 /**
     Prints the rules from a file and executes the rules logic.
@@ -58,7 +58,7 @@ std::string chooseMaze();
     Sorts all the entries on the scoreboard so it can be written.
     @param scoreboard vector<string> with all the winners
 */
-void sortScoreboard(std::vector<std::string>& scoreboard);
+void sortScoreboard(std::vector<std::string> &scoreboard);
 
 /**
     Asks for a name and writes it on the scoreboard file.

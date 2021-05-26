@@ -14,7 +14,8 @@ using namespace std;
 string MENU_FILE = "menu.txt";
 string RULES_FILE = "rules.txt";
 
-int main(){
+int main()
+{
     bool menu = true;
     bool rules = false;
     bool play = false;
@@ -30,20 +31,21 @@ int main(){
     {
         if (menu)
         {
-            if(!displayMenu(MENU_FILE, menu, rules, play, winners))
+            if (!displayMenu(MENU_FILE, menu, rules, play, winners))
                 return 0;
         }
         if (rules)
         {
-            if(!displayRules(RULES_FILE, menu, rules))
+            if (!displayRules(RULES_FILE, menu, rules))
                 return 0;
         }
         if (play)
         {
-            time_t current_time = time(nullptr);
-            if (reset_time){
-                time_counter = current_time;    // resets the timer
-                reset_time = false;   
+            time_t current_time = time(nullptr); //start timer
+            if (reset_time)
+            {
+                time_counter = current_time; // resets the timer
+                reset_time = false;
             }
             maze_file = chooseMaze();
             if (maze_file == "EXIT")
@@ -55,22 +57,24 @@ int main(){
                 continue;
             }
             Game game(maze_file);
-            resultado = game.play();
-            if (resultado){
-                finish_time = to_string(time(nullptr)- time_counter);
+            resultado = game.play(); //plays the game
+            if (resultado)
+            { //won
+                finish_time = to_string(time(nullptr) - time_counter);
                 cout << "You WON!!" << endl;
                 cout << "It took you " << finish_time << "s." << endl;
                 displayWinner(maze_file, finish_time);
                 restartGame(play, menu, reset_time);
             }
-            else{
+            else
+            { //lost
                 cout << "YOU LOST!" << endl;
                 restartGame(play, menu, reset_time);
             }
         }
         if (winners)
         {
-            if(!displayWinners(menu, winners))
+            if (!displayWinners(menu, winners))
                 return 0;
         }
     }
