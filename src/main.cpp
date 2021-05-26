@@ -11,8 +11,8 @@
 
 using namespace std;
 
-string MENU_FILE = "../assets/menu.txt";
-string RULES_FILE = "../assets/rules.txt";
+string MENU_FILE = "menu.txt";
+string RULES_FILE = "rules.txt";
 
 int main(){
     bool menu = true;

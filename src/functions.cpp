@@ -93,7 +93,7 @@ bool displayWinners(bool &menu, bool &winners)
         return 1;
     }
     else
-        file_name.insert(17, "_WINNERS"); //17 should be 7 if .cpp and .txt are in the same folder
+        file_name.insert(7, "_WINNERS"); //17 should be 7 if .cpp and .txt are in the same folder
     cout << endl;
     displayFile(file_name);
     cout << "\n\t\t\t\t0) Menu" << endl;
@@ -127,11 +127,11 @@ string chooseMaze()
         }
         else if (maze_number < 10)
         {
-            file_name = "../assets/MAZE_0" + to_string(maze_number) + ".txt"; //formats the fileName string
+            file_name = "MAZE_0" + to_string(maze_number) + ".txt"; //formats the fileName string
         }
         else
         {
-            file_name = "../assets/MAZE_" + to_string(maze_number) + ".txt"; //formats the fileName string
+            file_name = "MAZE_" + to_string(maze_number) + ".txt"; //formats the fileName string
         }
 
         ifstream file(file_name); //tries to open an existing file
@@ -176,7 +176,7 @@ void displayWinner(string maze_file, string finish_time)
     winner.insert(winner.size(), 15 - winner.size(), ' '); //fill with ' '
     cout << endl;
 
-    maze_file.insert(17, "_WINNERS");
+    maze_file.insert(7, "_WINNERS");
 
     ofstream writing;  
     ifstream reading;
