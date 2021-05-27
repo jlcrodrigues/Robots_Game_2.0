@@ -94,20 +94,11 @@ bool Game::drawRobot(int row, int col) const
 }
 
 /**
- * @brief Checks if the player has won the game by killing all robots or getting to the exit.
+ * @brief Checks if the player has won the game by getting to the exit.
  * @return boolean for representing if it has won or not.
  */
 bool Game::hasWon()
 {
-    int dead_robots = 0; //checking nr of dead robots
-    for (int i = 0; i < robots.size(); i++)
-    {
-        if (!robots.at(i).isAlive())
-            dead_robots++;
-    }
-    if (dead_robots == robots.size()) //if all robots are dead
-        return 1;
-
     if (maze.charPost(player.getRow(), player.getCol()) == 'O') //if player has found the exit
         return 1;
     return 0;
