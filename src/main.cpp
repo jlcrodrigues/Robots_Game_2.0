@@ -43,12 +43,6 @@ int main()
         }
         if (play)
         {
-            time_t current_time = time(nullptr); //start timer
-            if (reset_time)
-            {
-                time_counter = current_time; // resets the timer
-                reset_time = false;
-            }
             maze_file = chooseMaze();
             if (maze_file == "EXIT")
                 return 0;
@@ -59,6 +53,12 @@ int main()
                 continue;
             }
             Game game(maze_file);
+            time_t current_time = time(nullptr); //start timer
+            if (reset_time)
+            {
+                time_counter = current_time; // resets the timer
+                reset_time = false;
+            }
             resultado = game.play(); //plays the game
             if (resultado)
             { //won
