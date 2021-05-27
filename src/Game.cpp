@@ -207,6 +207,24 @@ bool Game::play()
         {
             game_state = "lost";
         }
+
+        bool valid_move = true;
+
+        for (size_t i = 0; i < robots.size(); i++) //check if player and stuck robot collide
+        {   
+            if (collide(robots.at(i), player)&& !robots.at(i).isAlive()) //same position and robot dead/stuck
+            {
+                valid_move = false;
+                break;
+            }
+        }
+        
+        if (!valid_move){
+            player = temp_player; //don't move player
+            cout << "Invalid movement!\n";
+            continue; //next move
+        }
+
         moveRobots(); //move all robots
 
         for (size_t i = 0; i < robots.size(); i++)
